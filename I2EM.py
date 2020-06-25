@@ -27,20 +27,20 @@ def backscatter(frequency,
                                                  thi,
                                                  ths,
                                                  phs,
-                                                 er, # Dielectric constant
+                                                 er.conjugate(), # Dielectric constant
                                                  sp,
                                                  xx)
 
     auto = 0 # Or 1
 
     if block_crosspol:
-        sigma_0_vv = np.nan
+        sigma_0_hv = np.nan
     else:
         sigma_0_hv = IEMX_model(frequency,
                                 sig,
                                 L,
                                 thi,
-                                er,
+                                er.conjugate(),
                                 sp,
                                 xx,
                                 auto)
@@ -108,7 +108,6 @@ def I2EM_Bistat_model(frequency,
 
 
     wvnb = k * math.sqrt((ss * cfs - s * cf) ** 2 + (ss * sfs - s * sf) ** 2)
-
 
     Ts = 1
 
